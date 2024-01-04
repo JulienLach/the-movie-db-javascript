@@ -23,9 +23,27 @@ h1 {
 
 img {
     height: 18em;
+    cursor: pointer;
 }
 
 h3,
 p {
     display: none;
+}
+
+.fiche-film {
+    position: fixed;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(236, 236, 236);
+    height: 480px;
+    width: 80%;
+    border-radius: 1em;
+
+}
+
+.fiche-film.active {
+    display: block;
 }

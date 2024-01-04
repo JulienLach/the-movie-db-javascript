@@ -2,7 +2,7 @@
 // ACCESS TOKEN AUTH : eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYThhYjFlZDY5OGY2OWNhMTFmYWM3OGI1ZmQ3OTYwMiIsInN1YiI6IjY1OTZhMzE0ZDdhNzBhMTIyZTY5ZWYwMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eN8ciSR6MPZkQCBvEyvjiJ2zYZpKWZepQCQ3TrDAVl4
 
 
-////// -- FETCH -- //////
+////// --1ER FETCH -- //////
 async function loadFetch() {
 
     const options = {
@@ -31,6 +31,7 @@ async function loadFetch() {
                 // récupération des données à mettre dans les éléments créés
                 const imageMovie = document.createElement("img");
                 imageMovie.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                imageMovie.classList.add("img")
 
                 const titreMovie = document.createElement("h3");
                 titreMovie.innerText = movie.original_title;
@@ -50,12 +51,47 @@ async function loadFetch() {
                 // attacher la fiche film à la section
                 sectionFilms.appendChild(ficheMovie);
             }
+            //appel de la fonction créer la div avec les infos supplémentaires
+            createFicheFilm();
         })
         .catch(err => console.error(err));
+
 }
 //appel dela fonction asynchrone loadFetch();
 loadFetch();
 
+////// --2EME FETCH -- //////
+async function loadDescriptionFetch() {
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYThhYjFlZDY5OGY2OWNhMTFmYWM3OGI1ZmQ3OTYwMiIsInN1YiI6IjY1OTZhMzE0ZDdhNzBhMTIyZTY5ZWYwMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eN8ciSR6MPZkQCBvEyvjiJ2zYZpKWZepQCQ3TrDAVl4'
+        }
+    };
 
+    fetch('https://api.themoviedb.org/3/trending/movie/day?language=fr-FR', options)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+        })
+        .catch(err => console.error(err));
+}
+loadDescriptionFetch();
+
+
+
+
+
+
+// Fonction créer la div qui contient les infos du film
 function createFicheFilm() {
+    const images = document.querySelectorAll(".img");
+
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            const ficheFilm = document.querySelector(".fiche-film")
+            ficheFilm.classList.toggle("active")
+        });
+    });
 }
