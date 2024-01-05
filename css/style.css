@@ -26,10 +26,6 @@ img {
     cursor: pointer;
 }
 
-h3,
-p {
-    display: none;
-}
 
 .fiche-film {
     position: fixed;
