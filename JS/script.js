@@ -51,8 +51,7 @@ async function loadFetch() {
                 // attacher la fiche film à la section
                 sectionFilms.appendChild(ficheMovie);
             }
-            //appel de la fonction créer la div avec les infos supplémentaires
-            createFicheFilm();
+
         })
         .catch(err => console.error(err));
 
@@ -74,8 +73,43 @@ async function loadDescriptionFetch() {
     fetch('https://api.themoviedb.org/3/trending/movie/day?language=fr-FR', options)
         .then(response => response.json())
         .then(response => {
+            console.log(response);
 
+            // attraper la section pour y mettre les Elements fiches films
+            const ficheFilms = document.querySelector(".fiche-film");
 
+            // boucle for pour parcourir tous les films dans la réponse
+            for (let i = 0; i < response.results.length; i++) {
+                const movie = response.results[i];
+
+                // création Element fiche film
+                const ficheMovie = document.createElement("article");
+
+                // récupération des données à mettre dans les éléments créés
+                const imageMovie = document.createElement("img");
+                imageMovie.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                imageMovie.classList.add("img")
+
+                const titreMovie = document.createElement("h3");
+                titreMovie.innerText = movie.original_title;
+
+                const descriptionMovie = document.createElement("p");
+                descriptionMovie.innerText = movie.overview;
+
+                const noteMovie = document.createElement("p");
+                noteMovie.innerText = movie.vote_average + " / 10";
+
+                // attacher les éléments à la fiche film
+                ficheMovie.appendChild(imageMovie);
+                ficheMovie.appendChild(titreMovie);
+                ficheMovie.appendChild(descriptionMovie);
+                ficheMovie.appendChild(noteMovie);
+
+                // attacher la fiche film à la section
+                ficheFilms.appendChild(ficheMovie);
+            }
+            //appel de la fonction créer la div avec les infos supplémentaires
+            createFicheFilm();
         })
 
         .catch(err => console.error(err));
