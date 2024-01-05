@@ -65,11 +65,11 @@ async function loadDescriptionFetch(movieId) {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=fr-FR`, options)
         .then(response => response.json())
         .then(movieInfo => {
-            console.log(movieInfo); // Check the movie information in the console
+            console.log(movieInfo); // Vérifier l'affichage des infos du films
 
-            const ficheFilm = document.querySelector(".fiche-film");
+            const ficheFilm = document.querySelector(".fiche-film"); // div qui contient les infos du film
 
-            ficheFilm.innerHTML = '';
+            ficheFilm.innerHTML = ''; // vider par defaut la div des infos
 
             const title = document.createElement("h3");
             title.innerText = movieInfo.original_title;
@@ -84,7 +84,7 @@ async function loadDescriptionFetch(movieId) {
             genres.innerText = "Genres: " + movieInfo.genres.map(genre => genre.name).join(", ");
 
             const closeButon = document.createElement("button")
-            closeButon.innerText = "fermer"
+            closeButon.innerText = "Fermer"
             closeButon.addEventListener("click", function () {
                 ficheFilm.style.display = "none"
             })
