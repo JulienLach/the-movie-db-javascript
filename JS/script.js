@@ -83,6 +83,13 @@ async function loadDescriptionFetch(movieId) {
             const genres = document.createElement("p");
             genres.innerText = "Genres: " + movieInfo.genres.map(genre => genre.name).join(", ");
 
+            const closeButon = document.createElement("button")
+            closeButon.innerText = "fermer"
+            closeButon.addEventListener("click", function () {
+                ficheFilm.style.display = "none"
+            })
+
+            ficheFilm.appendChild(closeButon);
             ficheFilm.appendChild(title);
             ficheFilm.appendChild(overview);
             ficheFilm.appendChild(releaseDate);
@@ -93,6 +100,7 @@ async function loadDescriptionFetch(movieId) {
         .catch(err => console.error(err));
 }
 
+// Fonction créer la fiche film avec infos du film ciblé
 function createFicheFilm() {
     const images = document.querySelectorAll(".img");
 
