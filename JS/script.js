@@ -95,7 +95,7 @@ async function loadDescriptionFetch(movieId) {
             ficheFilm.appendChild(releaseDate);
             ficheFilm.appendChild(genres);
 
-            ficheFilm.style.display = "block"; // Show the fiche-film element
+            ficheFilm.style.display = "flex"; // Afficher la fiche-film
         })
         .catch(err => console.error(err));
 }
