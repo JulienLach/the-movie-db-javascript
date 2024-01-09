@@ -20,6 +20,7 @@ h1 {
     width: 95%;
     margin: auto;
     place-items: center;
+    text-align: center;
 }
 
 img {
@@ -56,9 +57,4 @@ img:hover {
     gap: 2em;
     padding: 2em;
     background-color: lightgray;
-}
-
-p,
-h3 {
-    text-align: center;
 }
