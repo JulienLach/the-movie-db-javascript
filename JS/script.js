@@ -33,6 +33,7 @@ async function loadFetch() {
 
                 const descriptionMovie = document.createElement("p");
                 descriptionMovie.innerText = movie.overview;
+                descriptionMovie.style.display = "none";
 
                 const noteMovie = document.createElement("p");
                 noteMovie.innerText = movie.vote_average + " / 10";
@@ -106,13 +107,13 @@ function createFicheFilm() {
 
     images.forEach(img => {
         img.addEventListener("click", function () {
-            console.log("Image clicked"); // Check if the click event is being triggered
+            console.log("Image clicked"); // Vérifier si l'image est cliquée
 
             const ficheFilm = document.querySelector(".fiche-film");
-            ficheFilm.innerHTML = ''; // Clear existing content
+            ficheFilm.innerHTML = ''; // Vider l'élement par défaut
 
             const movieId = img.getAttribute("data-movie-id");
-            console.log("Movie ID:", movieId); // Check if the movieId is correct
+            console.log("Movie ID:", movieId);
             loadDescriptionFetch(movieId);
 
             ficheFilm.style.display = "block"; // Show the fiche-film element

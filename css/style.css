@@ -19,11 +19,19 @@ h1 {
     gap: 2em;
     width: 95%;
     margin: auto;
+    place-items: center;
 }
 
 img {
     height: 18em;
     cursor: pointer;
+    transition: 0.25s;
+    z-index: 0;
+    border-radius: 0.2em;
+}
+
+img:hover {
+    opacity: 0.8;
 }
 
 .fiche-film {
@@ -35,11 +43,11 @@ img {
     background-color: lightgray;
     height: 480px;
     width: 80%;
-    border-radius: 1em;
+    border-radius: 0.4em;
     padding: 2em;
     flex-direction: column;
     gap: 2em;
-
+    z-index: 1000;
 }
 
 .fiche-film.active {
@@ -48,4 +56,9 @@ img {
     gap: 2em;
     padding: 2em;
     background-color: lightgray;
+}
+
+p,
+h3 {
+    text-align: center;
 }
